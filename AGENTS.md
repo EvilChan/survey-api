@@ -12,5 +12,9 @@ Java 21 / Spring Boot / MyBatis-Plus / PostgreSQL。按 **package-by-feature** �
 - ErrorCode 新增流程：[`src/main/java/com/survey/common/error/AGENTS.md`](src/main/java/com/survey/common/error/AGENTS.md)
 - 错误码对照表：[`docs/error-codes.md`](docs/error-codes.md)
 
+## Superpowers 工作流
+- 开发新功能或修问题、在写/提交 spec 或 plan 之前：先从主分支创建并切换到新分支（`feature/...` 或 `fix/...`），再进入 brainstorming / writing-plans
+- 已在目标功能分支上可跳过
+
 ## 文档
 - 设计/计划：`docs/superpowers/specs/`、`docs/superpowers/plans/`
