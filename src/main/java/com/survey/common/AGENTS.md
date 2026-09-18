@@ -1,0 +1,13 @@
+# com.survey.common
+
+跨模块复用的 API 壳、错误模型与 Web 横切；**禁止**放入业务实体或单模块逻辑。
+
+## 分包约定
+- `api/`：`ApiResult`、`FieldErrorDetail`（以及未来的分页等通用出参）
+- `error/`：`ErrorCode`、`BizException`（细则见 [`error/AGENTS.md`](error/AGENTS.md)）
+- `web/`：`GlobalExceptionHandler`、`TraceIdFilter`
+
+## 使用要点
+- Controller 成功返回 `ApiResult.ok(...)` / `ApiResult.ok()`
+- 业务失败抛 `BizException`，由 `GlobalExceptionHandler` 转成 `ApiResult.fail(...)`
+- 新增通用数据结构放 `api/`；仅一处使用的 DTO 放业务模块
