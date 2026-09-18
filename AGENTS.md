@@ -6,6 +6,7 @@ Java 21 / Spring Boot / MyBatis-Plus / PostgreSQL。按 **package-by-feature** �
 - 接口统一返回 `com.survey.common.api.ApiResult`
 - 业务失败抛 `com.survey.common.error.BizException`，错误码只用 `ErrorCode` 枚举
 - `common` 只放跨模块复用能力；业务实体与仅单模块使用的 DTO 放各业务包
+- Git 提交说明尽量使用简体中文；聚焦「为什么改」，1–2 句即可；类型前缀可用（如 `docs:` / `feat:` / `fix:`），后接中文简述
 - **API 风格：动作式，不用 RESTful**
   - 路径表达动作，形如 `/api/{module}/{resource}/{action}`（例：`/api/rbac/role/create`）
   - 路径用单数资源名（`role` 而非 `roles`）；列表动作用 `list`，详情用 `detail`
