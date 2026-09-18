@@ -1,5 +1,6 @@
 package com.survey.common.api;
 
+import java.time.Instant;
 import java.util.List;
 
 import org.slf4j.MDC;
@@ -14,7 +15,7 @@ public record ApiResult<T>(
     T data,
     List<FieldErrorDetail> details,
     String traceId,
-    Long timestamp
+    Instant timestamp
 ) {
 
     public static <T> ApiResult<T> ok() {
@@ -24,7 +25,7 @@ public record ApiResult<T>(
             null,
             null,
             null,
-            System.currentTimeMillis()
+            Instant.now()
         );
     }
 
@@ -35,7 +36,7 @@ public record ApiResult<T>(
             data,
             null,
             null,
-            System.currentTimeMillis()
+            Instant.now()
         );
     }
 
@@ -46,7 +47,7 @@ public record ApiResult<T>(
             null,
             details,
             MDC.get("traceId"),
-            System.currentTimeMillis()
+            Instant.now()
         );
     }
 
