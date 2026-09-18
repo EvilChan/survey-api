@@ -93,4 +93,15 @@ class SysRoleControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.code").value("C0001"));
     }
+
+    @Test
+    void create_blankCode_returnsC0001() throws Exception {
+        mockMvc.perform(post("/api/rbac/role/create")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"code":"","name":"编辑","description":"d","sort":5}
+                                """))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value("C0001"));
+    }
 }

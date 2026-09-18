@@ -6,6 +6,7 @@
 - `api/`：`ApiResult`、`FieldErrorDetail`、`PageQuery`、`PageResult`
 - `error/`：`ErrorCode`、`BizException`（细则见 [`error/AGENTS.md`](error/AGENTS.md)）
 - `web/`：`GlobalExceptionHandler`、`TraceIdFilter`
+- `mybatis/`：`MybatisPlusConfig`（分页拦截器等 MyBatis-Plus 全局配置）
 
 ## 使用要点
 - Controller 成功返回 `ApiResult.ok(...)` / `ApiResult.ok()`
