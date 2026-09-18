@@ -93,6 +93,30 @@ class SysRoleServiceTest {
     }
 
     @Test
+    void update_builtin_sameCode_canChangeName() {
+        SysRole existing = builtinRole(1L, "SUPER_ADMIN");
+        existing.setName("旧超管");
+        when(mapper.selectById(1L)).thenReturn(existing);
+        when(mapper.updateById(any(SysRole.class))).thenReturn(1);
+
+        RoleResponse resp = service.update(
+                new RoleUpdateRequest(1L, "SUPER_ADMIN", "超级管理员", "内置角色", 10));
+
+        assertEquals("SUPER_ADMIN", resp.code());
+        assertEquals("超级管理员", resp.name());
+        assertEquals("内置角色", resp.description());
+        assertEquals(10, resp.sort());
+
+        ArgumentCaptor<SysRole> captor = ArgumentCaptor.forClass(SysRole.class);
+        verify(mapper).updateById(captor.capture());
+        SysRole updated = captor.getValue();
+        assertEquals("SUPER_ADMIN", updated.getCode());
+        assertEquals("超级管理员", updated.getName());
+        assertEquals("内置角色", updated.getDescription());
+        assertEquals(10, updated.getSort());
+    }
+
+    @Test
     void delete_builtin_throws() {
         when(mapper.selectById(1L)).thenReturn(builtinRole(1L, "SUPER_ADMIN"));
 
