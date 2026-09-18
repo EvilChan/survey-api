@@ -3,7 +3,7 @@
 跨模块复用的 API 壳、错误模型与 Web 横切；**禁止**放入业务实体或单模块逻辑。
 
 ## 分包约定
-- `api/`：`ApiResult`、`FieldErrorDetail`（以及未来的分页等通用出参）
+- `api/`：`ApiResult`、`FieldErrorDetail`、`PageQuery`、`PageResult`
 - `error/`：`ErrorCode`、`BizException`（细则见 [`error/AGENTS.md`](error/AGENTS.md)）
 - `web/`：`GlobalExceptionHandler`、`TraceIdFilter`
 
